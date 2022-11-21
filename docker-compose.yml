@@ -1,0 +1,28 @@
+version: "3"
+services:
+  app:
+    build: .
+    container_name: flask_todo
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+     - 8000:8000
+    depends_on:
+      - db
+    command: python app.py run -h 0.0.0.0 -p 8000
+    restart: always
+
+  db:
+    container_name: flask_todo_db
+    image: postgres:11.9-alpine #latest
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=todo
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  db_data:

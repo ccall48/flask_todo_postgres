@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}
+{% block body %}
+
+<form action="/update/{{ task.id }}" method="POST">
+    <input class="form-control mt-2" name="task" value="{{ task.task }}" type="text"><br />
+    <button type="submit" class="btn btn-primary">Update Task</button>
+</form>
+
+{% endblock body %}

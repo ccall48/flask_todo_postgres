@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}
+{% block body %}
+<form action="{{ url_for('urls.create') }}" method="POST">
+    <input class="mt-2 mb-2" name="todo" type="text"><br />
+    <input class="btn-primary" type="submit" value="Add Task">
+</form>
+{% endblock body %}
